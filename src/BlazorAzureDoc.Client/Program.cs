@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Blazor.Hosting;
 
-namespace blazorazuredoc
+namespace BlazorAzureDoc.Client
 {
     public class Program
     {

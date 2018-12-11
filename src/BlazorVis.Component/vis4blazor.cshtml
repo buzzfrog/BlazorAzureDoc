@@ -1,0 +1,18 @@
+﻿@using BlazorVis.Component.Model
+
+<div id="vis-network"></div>
+
+@functions{ 
+
+
+    protected override void OnAfterRender()
+    {
+        base.OnAfterRender();
+
+        var nodes = new List<Node>() { new Node() { id = 1, label = "a" }, new Node() { id = 2, label = "b" } };
+        var edges = new List<Edge>() { new Edge() { from = 1, to = 2 } };
+
+        Javascript.LoadVis("vis-network", nodes, edges);
+    }
+
+}
