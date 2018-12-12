@@ -1,7 +1,12 @@
 ﻿@page "/"
+@using GitHub.Service
+@inject GitHubService gitHubService
 
-<h1>Hello, world!</h1>
+@foreach (var item in gitHubService.GetFoldersAsync("articles").GetAwaiter().GetResult())
+    {
+        <p>
+            @item.Name
+        </p>
+    }
 
-Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />

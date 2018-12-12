@@ -13,6 +13,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAzureDoc.Client", "sr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorVis.Component", "src\BlazorVis.Component\BlazorVis.Component.csproj", "{1C52B36B-571F-4DD7-A020-57BD30DBCA5D}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitHub.Service", "src\GitHub.Service\GitHub.Service.csproj", "{AAD5CDE9-7BF5-403E-827F-2E35CC5480FC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{437FB588-42CB-4245-B6C0-DD9462059DC7}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +38,10 @@ Global
 		{1C52B36B-571F-4DD7-A020-57BD30DBCA5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C52B36B-571F-4DD7-A020-57BD30DBCA5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C52B36B-571F-4DD7-A020-57BD30DBCA5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAD5CDE9-7BF5-403E-827F-2E35CC5480FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAD5CDE9-7BF5-403E-827F-2E35CC5480FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAD5CDE9-7BF5-403E-827F-2E35CC5480FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAD5CDE9-7BF5-403E-827F-2E35CC5480FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +50,7 @@ Global
 		{654B4D6F-A41B-4A0E-92D3-70BB93212871} = {A952D221-609E-4588-971F-95F44D52D40E}
 		{F061CD7A-DA80-4326-AB0B-772EF7666A9A} = {03BE0F2B-F258-42D7-A9FB-9967876AFF6A}
 		{1C52B36B-571F-4DD7-A020-57BD30DBCA5D} = {03BE0F2B-F258-42D7-A9FB-9967876AFF6A}
+		{AAD5CDE9-7BF5-403E-827F-2E35CC5480FC} = {03BE0F2B-F258-42D7-A9FB-9967876AFF6A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D4772123-882C-4A34-AEFB-E4F153863F44}
