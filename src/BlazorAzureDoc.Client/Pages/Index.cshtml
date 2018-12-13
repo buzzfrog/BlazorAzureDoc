@@ -2,11 +2,30 @@
 @using GitHub.Service
 @inject GitHubService gitHubService
 
-@foreach (var item in gitHubService.GetFoldersAsync("articles").GetAwaiter().GetResult())
+@if (entries == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+
+    @foreach (var item in entries)
     {
         <p>
-            @item.Name
+            @item.name
         </p>
+    }
+}
+
+    @functions {
+
+    IEnumerable<Entry> entries;
+
+protected override async Task OnInitAsync()
+{
+    entries = await gitHubService.GetFoldersAsync("articles");
+}
+
     }
 
 

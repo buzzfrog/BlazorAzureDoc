@@ -1,29 +1,32 @@
-﻿using Octokit;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Text;
 
 namespace GitHub.Service
 {
     public class GitHubService
     {
-        private IGitHubClient gitHubClient;
+        private IGitHubApiFacade gitHubApiFacade;
 
-        public GitHubService(IGitHubClient gitHubClient)
+        public GitHubService(IGitHubApiFacade gitHubApiFacade)
         {
-            this.gitHubClient = gitHubClient;
+            this.gitHubApiFacade = gitHubApiFacade;
         }
 
-        public async Task<IEnumerable<RepositoryContent>> GetFoldersAsync(string folderName)
+        public async Task<IEnumerable<Entry>> GetFoldersAsync(string folderName)
         {
-         return (await gitHubClient.Repository.Content.GetAllContents("MicrosoftDocs", "azure-docs", folderName))
-                .Where(c => c.Type == ContentType.Dir);
+           
+            return Microsoft.JSInterop.Json.Deserialize<List<Entry>>(await gitHubApiFacade.GetContentsAsync("MicrosoftDocs", "azure-docs", folderName))
+                .Where(x => x.type == "dir");     
         }
 
         public async Task<string> ReadTextFileAsync(string path)
         {
-            return (await gitHubClient.Repository.Content.GetAllContents("MicrosoftDocs", "azure-docs", path)).First().Content;
+            var entry = Microsoft.JSInterop.Json.Deserialize<Entry>(await gitHubApiFacade.GetContentsAsync("MicrosoftDocs", "azure-docs", path));
+
+            return Encoding.UTF8.GetString(Convert.FromBase64String(entry.content));
         }
     }
 }

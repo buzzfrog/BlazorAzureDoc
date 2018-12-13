@@ -2,7 +2,6 @@ using GitHub.Service;
 using Microsoft.AspNetCore.Blazor.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Octokit;
 
 namespace BlazorAzureDoc.Client
 {
@@ -13,7 +12,7 @@ namespace BlazorAzureDoc.Client
         public void ConfigureServices(IServiceCollection services)
         {
             //services.Configure<ProgramOptions>(Configuration);
-            services.AddSingleton<IGitHubClient>(new GitHubClient((new ProductHeaderValue("BlazorAzureDoc"))));
+            services.AddTransient<IGitHubApiFacade, GitHubApiFacade>();
             services.AddSingleton<GitHubService>();
         }
 
