@@ -1,4 +1,7 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@using GitHub.Service
+@inject GitHubService gitHubService
+
+<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">Azure Documentation</a>
     <button class="navbar-toggler" onclick=@ToggleNavMenu>
         <span class="navbar-toggler-icon"></span>
@@ -13,6 +16,17 @@
             </NavLink>
         </li>
     </ul>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Section
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            @foreach (var item in entries)
+            {
+                <a class="dropdown-item" href="#">@item.name</a>
+            }
+        </div>
+    </div>
 </div>
 
 @functions {
@@ -22,4 +36,12 @@
     {
         collapseNavMenu = !collapseNavMenu;
     }
+
+    IEnumerable<Entry> entries = new List<Entry>();
+
+    protected override async Task OnInitAsync()
+    {
+        entries = await gitHubService.GetFoldersAsync("articles");
+    }
+
 }

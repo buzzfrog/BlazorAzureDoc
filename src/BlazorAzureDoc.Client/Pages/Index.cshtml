@@ -1,31 +1,26 @@
 ﻿@page "/"
 @using GitHub.Service
+@using BlazorVis.Component
+@using BlazorVis.Component.Model
 @inject GitHubService gitHubService
 
-@if (entries == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
+<div id="vis-network"></div>
 
-    @foreach (var item in entries)
+@functions {
+
+
+    protected override async Task OnAfterRenderAsync()
     {
-        <p>
-            @item.name
-        </p>
+        // var fileContent = await gitHubService.ReadTextFileAsync("app-service/toc.yml");
+
+        // var toc = BlazorAzureDoc.Client.Utils.Convert.FromYamlToObject(fileContent);
+
+        var nodes = new List<Node>() { new Node() { id = 1, label = "a" }, new Node() { id = 2, label = "b" } };
+        var edges = new List<Edge>() { new Edge() { from = 1, to = 2 } };
+
+        await Javascript.LoadVis("vis-network", nodes, edges);
     }
+
 }
-
-    @functions {
-
-    IEnumerable<Entry> entries;
-
-protected override async Task OnInitAsync()
-{
-    entries = await gitHubService.GetFoldersAsync("articles");
-}
-
-    }
 
 
