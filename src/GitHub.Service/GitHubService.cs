@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GitHub.Service
 {
-    public class GitHubService
+    public class GitHubService : IGitHubService
     {
         private IGitHubApiFacade gitHubApiFacade;
 

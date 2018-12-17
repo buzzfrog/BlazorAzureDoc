@@ -13,7 +13,7 @@ namespace BlazorAzureDoc.Client
         {
             //services.Configure<ProgramOptions>(Configuration);
             services.AddTransient<IGitHubApiFacade, GitHubApiFacade>();
-            services.AddSingleton<GitHubService>();
+            services.AddSingleton<IGitHubService, GitHubService>();
         }
 
         public void Configure(IBlazorApplicationBuilder app)
